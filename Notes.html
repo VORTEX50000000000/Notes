@@ -40,6 +40,41 @@
     color: rgba(50, 82, 50, 1.0);
     border: 2px solid #96c56f;
     box-shadow: 0px 1px 1px #444444;
+    
+#controls {
+    margin-left: 10px;
+}
+a.button {
+    width: 15%;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #a9db80, #96c56f);
+    background: -moz-linear-gradient(top, #a9db80, #96c56f);
+    background: -ms-linear-gradient(top, #a9db80, #96c56f);
+    background: -o-linear-gradient(top, #a9db80, #96c56f);
+    background: linear-gradient(to bottom, #a9db80, #96c56f);
+    border-radius: 8px;
+    border: 1px solid #444444;
+    box-shadow: 0px 1px 1px #888888 inset, 1px 1px 3px #222222;
+    color: #6d954e;
+    text-decoration: none;
+    text-align: center;
+    padding: 16px 32px 16px 32px;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.4);
+    font-family: arial;
+}
+a.button:hover {
+    background: rgba(120, 160, 120, 1);
+    color: white;
+}
+a.button:active {
+    background: rgba(80, 120, 80, 1);
+}
+#aboutus {
+    margin: 8px;
+    color: #96c56f;
+    font: 16px arial;
+    text-align: center;
+}
 </style>
     <body>
     <div id="header">
@@ -54,10 +89,34 @@
         <div id="container">
             <textarea id="area" rows="10" cols="50"></textarea>
         </div>
+        <div id="controls">
+    <p><a href="javascript:save();" class="button">Save</a>
+        <a href="javascript:clear();" class="button">Clear</a></p>
+</div>
         <script>
         window.onload = function() {
     document.getElementById('menulink').onclick = function() {
         var menu = document.getElementById('menu');
+        document.getElementById('about').onclick = function() {
+    document.getElementById('container').innerHTML = "";
+    document.getElementById('controls').innerHTML = "";
+    document.getElementById('menu').className = 'hiddenmenu';
+    var container = document.getElementById('container');
+    var p = document.createElement('p');
+    p.id = 'aboutus';
+    container.appendChild(p);
+    var text = document.createTextNode("This tutorial is made possible through Eqela Developer Network");
+    p.appendChild(text);
+}
+        var home = document.getElementById('container').innerHTML;
+var controls = document.getElementById('controls').innerHTML;
+display_saved_note();
+document.getElementById('home').onclick = function() {
+    document.getElementById('container').innerHTML = home;
+    document.getElementById('controls').innerHTML = controls;
+    document.getElementById('menu').className = 'hiddenmenu';
+    display_saved_note();
+}
         if(menu.className != 'shownmenu') {
             menu.className = 'shownmenu';
         }
@@ -65,6 +124,38 @@
             menu.className = 'hiddenmenu';
         }
     }
+}
+        function check_web_storage_support() {
+    if(typeof(Storage) !== "undefined") {
+        return(true);
+    }
+    else {
+        alert("Web storage unsupported!");
+        return(false);
+    }
+}
+            function display_saved_note() {
+    if(check_web_storage_support() == true) {
+        result = localStorage.getItem('note');
+    }
+    if(result === null) {
+        result = "No note saved";
+    }
+    document.getElementById('area').value = result;
+}
+            function save() {
+    if(check_web_storage_support() == true) {
+        var area = document.getElementById("area");
+        if(area.value != '') {
+            localStorage.setItem("note", area.value);
+        }
+        else {
+            alert("Nothing to save");
+        }
+    }
+}
+            function clear() {
+    document.getElementById('area').value = "";
 }
         </script>
     </body>
