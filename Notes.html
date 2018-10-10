@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title> NOTES</title>
+    </head>
+    <style type="text/css">
+    body {
+    margin: 0px;
+}
+#header {
+    background: black;
+    color: white;
+    font: arial;
+    font-size: 16px;
+    padding: 16px;
+}
+#header > #name {
+    font-family: Arial, Sans-serif;
+    display: inline-block;
+}
+#menu a, #menubutton a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-family: Arial, Sans-serif;
+    font-size: 13px;
+}
+.clear {
+    clear: both;
+}
+#container {
+    margin: 20px 20px 20px 20px;
+}
+#area {
+    width: 100%;
+    height: 100%;
+    font: 1em arial;
+    color: rgba(50, 82, 50, 1.0);
+}
+#area:focus {
+    color: rgba(50, 82, 50, 1.0);
+    border: 2px solid #96c56f;
+    box-shadow: 0px 1px 1px #444444;
+</style>
+    <body>
+    <div id="header">
+            <div id="name">Notes</div>
+            <div id="menubutton"><a id="menulink" href="#">MENU</a></div>
+            <div id="menu" class="hiddenmenu">
+                <div class="menuitem"><a id="home" href="#">Home</a></div>
+                
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="container">
+            <textarea id="area" rows="10" cols="50"></textarea>
+        </div>
+        <script>
+        window.onload = function() {
+    document.getElementById('menulink').onclick = function() {
+        var menu = document.getElementById('menu');
+        if(menu.className != 'shownmenu') {
+            menu.className = 'shownmenu';
+        }
+        else {
+            menu.className = 'hiddenmenu';
+        }
+    }
+}
+        </script>
+    </body>
+</html>
