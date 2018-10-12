@@ -69,12 +69,7 @@ a.button:hover {
 a.button:active {
     background: rgba(80, 120, 80, 1);
 }
-#aboutus {
-    margin: 8px;
-    color: #96c56f;
-    font: 16px arial;
-    text-align: center;
-}
+
 </style>
     <body>
     <div id="header">
@@ -125,35 +120,10 @@ document.getElementById('home').onclick = function() {
         }
     }
 }
-        function check_web_storage_support() {
-    if(typeof(Storage) !== "undefined") {
-        return(true);
-    }
-    else {
-        alert("Web storage unsupported!");
-        return(false);
-    }
-}
-            function display_saved_note() {
-    if(check_web_storage_support() == true) {
-        result = localStorage.getItem('note');
-    }
-    if(result === null) {
-        result = "No note saved";
-    }
-    document.getElementById('area').value = result;
-}
-            function save() {
-    if(check_web_storage_support() == true) {
-        var area = document.getElementById("area");
-        if(area.value != '') {
-            localStorage.setItem("note", area.value);
-        }
-        else {
-            alert("Nothing to save");
-        }
-    }
-}
+        $(document).ready(function() {
+        localStorage.setItem("writtenData",container );
+        localStorage.getItem("writtenData",container );
+        });
             function clear() {
     document.getElementById('area').value = "";
 }
