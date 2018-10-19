@@ -40,7 +40,7 @@
     color: rgba(50, 82, 50, 1.0);
     border: 2px solid #96c56f;
     box-shadow: 0px 1px 1px #444444;
-    
+        }
 #controls {
     margin-left: 10px;
 }
@@ -77,56 +77,28 @@ a.button:active {
             <div id="menubutton"><a id="menulink" href="#">MENU</a></div>
             <div id="menu" class="hiddenmenu">
                 <div class="menuitem"><a id="home" href="#">Home</a></div>
-                
+                <button id= "saveButton" >Save</button>
+                <button id= "loadButton">Load</button>
             </div>
-            <div class="clear"></div>
+            
         </div>
         <div id="container">
             <textarea id="area" rows="10" cols="50"></textarea>
         </div>
-        <div id="controls">
-    <p><a href="javascript:save();" class="button">Save</a>
-        <a href="javascript:clear();" class="button">Clear</a></p>
-</div>
-        <script>
-        window.onload = function() {
-    document.getElementById('menulink').onclick = function() {
-        var menu = document.getElementById('menu');
-        document.getElementById('about').onclick = function() {
-    document.getElementById('container').innerHTML = "";
-    document.getElementById('controls').innerHTML = "";
-    document.getElementById('menu').className = 'hiddenmenu';
-    var container = document.getElementById('container');
-    var p = document.createElement('p');
-    p.id = 'aboutus';
-    container.appendChild(p);
+        
     
-    p.appendChild(text);
-}
-        var home = document.getElementById('container').innerHTML;
-var controls = document.getElementById('controls').innerHTML;
-display_saved_note();
-document.getElementById('home').onclick = function() {
-    document.getElementById('container').innerHTML = home;
-    document.getElementById('controls').innerHTML = controls;
-    document.getElementById('menu').className = 'hiddenmenu';
-    display_saved_note();
-}
-        if(menu.className != 'shownmenu') {
-            menu.className = 'shownmenu';
-        }
-        else {
-            menu.className = 'hiddenmenu';
-        }
-    }
-}
-        $(document).ready(function() {
+        
+
+        <script>
+       
+               $("button.saveButton").click(function () {
+		
+	    (document).ready(function() {
         localStorage.setItem("writtenData",container );
-        localStorage.getItem("writtenData",container );
+        localStorage.getItem("writtenData");
         });
-            function clear() {
-    document.getElementById('area').value = "";
-}
+    });
+            
         </script>
     </body>
 </html>
