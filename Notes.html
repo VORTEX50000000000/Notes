@@ -17,15 +17,8 @@
     font-family: Arial, Sans-serif;
     display: inline-block;
 }
-#menu a, #menubutton a {
-    text-decoration: none;
-    color: white;
-    text-transform: uppercase;
-    font-family: Arial, Sans-serif;
-    font-size: 13px;
-}
-.clear {
-    clear: both;
+
+
 }
 #container {
     margin: 20px 20px 20px 20px;
@@ -41,8 +34,7 @@
     border: 2px solid #96c56f;
     box-shadow: 0px 1px 1px #444444;
         }
-#controls {
-    margin-left: 10px;
+
 }
 a.button {
     width: 15%;
@@ -74,30 +66,50 @@ a.button:active {
     <body>
     <div id="header">
             <div id="name">Notes</div>
-            <div id="menubutton"><a id="menulink" href="#">MENU</a></div>
-            <div id="menu" class="hiddenmenu">
-                <div class="menuitem"><a id="home" href="#">Home</a></div>
+            
+               
                 <button id= "saveButton" >Save</button>
                 <button id= "loadButton">Load</button>
             </div>
             
         </div>
         <div id="container">
-            <textarea id="area" rows="10" cols="50"></textarea>
+            <textarea id="input" rows="40" cols="200"></textarea>
         </div>
         
     
         
 
         <script>
-       
-               $("button.saveButton").click(function () {
+       $(document).ready(function() {
+	//Get text from input box - expression
+	$("input").val()
+	//Get text from input box and remember
+	let nombre = $("input").val();
+
+	//Put text on page
+	$("p#response").text(nombre);
+	
+	//Create new element
+	//at the bottom of the page
+	$("<p></p>").appendTo("body");
+	
+	//Add click event listener to a button
+	$("button#create").click(function() {
+		$("<h1>Hello!</h1>").appendTo("body");	
+	});
+	
+	//Create object
+	let text = input
 		
-	    (document).ready(function() {
-        localStorage.setItem("writtenData",container );
-        localStorage.getItem("writtenData");
-        });
-    });
+		
+	
+	
+	
+	//Saving to the browser
+	localStorage.setItem("Data",text);
+	localStorage.getItem("Data");
+});
             
         </script>
     </body>
